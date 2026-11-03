@@ -1,0 +1,246 @@
+
+/* ==========================================
+   Лабораторна робота №3
+   Проєкт: Акустична варта
+   Файл: _layout.scss
+   ========================================== */
+
+@use "variables" as v;
+@use "mixins" as m;
+
+/* ОСНОВНИЙ КОНТЕЙНЕР */
+
+.container {
+    @include m.container;
+    min-width: 0;
+}
+
+/* ВІДСТУПИ СЕКЦІЙ */
+
+.section {
+    margin-top: v.$space-lg;
+    margin-bottom: v.$space-lg;
+
+    h2 {
+        margin-bottom: v.$space-md;
+    }
+
+    @include m.respond-to(v.$bp-tablet) {
+        margin-top: v.$space-xl;
+        margin-bottom: v.$space-xl;
+    }
+}
+
+/* ШАПКА САЙТУ */
+
+.site-header {
+    background-color: v.$color-white;
+    border-bottom: 1px solid v.$color-border;
+    padding: v.$space-md 0;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: v.$space-md;
+
+    @include m.respond-to(v.$bp-tablet) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+/* ЛОГОТИП І НАЗВА */
+
+.brand {
+    h1 {
+        font-size: clamp(22px, 3vw, 26px);
+        color: v.$color-text;
+    }
+
+    p {
+        font-size: v.$font-xs;
+        margin-top: v.$space-xs;
+    }
+}
+
+/* НАВІГАЦІЯ */
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: v.$space-sm;
+    width: 100%;
+
+    @include m.respond-to(v.$bp-tablet) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+        width: auto;
+        gap: v.$space-sm;
+    }
+}
+
+/* ГОЛОВНИЙ БАНЕР */
+
+.hero {
+    background-color: v.$color-surface;
+    overflow: hidden;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: v.$space-lg;
+    padding-top: v.$space-xl;
+    padding-bottom: v.$space-xl;
+
+    @include m.respond-to(v.$bp-tablet) {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        align-items: center;
+        min-height: 320px;
+    }
+
+    @include m.respond-to(v.$bp-desktop) {
+        min-height: 370px;
+        gap: v.$space-xl;
+    }
+}
+
+/* ТЕКСТ БАНЕРА */
+
+.hero-text {
+    min-width: 0;
+
+    h2 {
+        font-size: clamp(28px, 5vw, 46px);
+        line-height: 1.15;
+        margin-bottom: v.$space-md;
+        max-width: 600px;
+    }
+
+    p {
+        font-size: clamp(14px, 2vw, 17px);
+        margin-bottom: v.$space-lg;
+        max-width: 540px;
+    }
+}
+
+/* ФОТОГРАФІЯ БАНЕРА */
+
+.hero-image {
+    width: 100%;
+    min-height: 220px;
+    border-radius: v.$radius-lg;
+
+    background-image: url("../images/header.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @include m.respond-to(v.$bp-tablet) {
+        min-height: 270px;
+    }
+
+    @include m.respond-to(v.$bp-desktop) {
+        min-height: 310px;
+    }
+}
+
+/* СІТКА ПОТОЧНОГО МОНІТОРИНГУ */
+
+.monitoring-grid {
+    @include m.responsive-grid(1, v.$space-md);
+
+    @include m.respond-to(v.$bp-tablet) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include m.respond-to(v.$bp-desktop) {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+/* СІТКА НАПРЯМІВ РОБОТИ */
+
+.services-grid {
+    @include m.responsive-grid(1, v.$space-md);
+
+    @include m.respond-to(v.$bp-tablet) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include m.respond-to(v.$bp-desktop) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+/* НИЖНІЙ КОЛОНТИТУЛ */
+
+footer {
+    background-color: v.$color-footer;
+    color: v.$color-white;
+    padding: v.$space-xl 0;
+    margin-top: v.$space-xl;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-lg;
+
+    @include m.respond-to(v.$bp-tablet) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+/* ІНФОРМАЦІЯ У FOOTER */
+
+.footer-brand {
+    h3 {
+        font-size: v.$font-lg;
+        margin-bottom: v.$space-sm;
+    }
+
+    p {
+        color: #d2dbe4;
+        font-size: v.$font-xs;
+    }
+}
+
+/* ПРАВА ЧАСТИНА FOOTER */
+
+.footer-right {
+    text-align: left;
+
+    p {
+        color: #d2dbe4;
+        font-size: v.$font-xs;
+        margin-top: v.$space-md;
+    }
+
+    @include m.respond-to(v.$bp-tablet) {
+        text-align: right;
+    }
+}
+
+/* НАВІГАЦІЯ FOOTER */
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: v.$space-sm;
+
+    @include m.respond-to(v.$bp-tablet) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+}

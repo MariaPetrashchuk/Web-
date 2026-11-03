@@ -1,0 +1,47 @@
+
+/* ==========================================
+   Лабораторна робота №3
+   Проєкт: Акустична варта
+   Файл: _mixins.scss
+   ========================================== */
+
+@use "variables" as v;
+
+/* 1. Адаптивність через Media Queries */
+@mixin respond-to($breakpoint) {
+    @media (min-width: $breakpoint) {
+        @content;
+    }
+}
+
+/* 2. Центрування елементів через Flexbox */
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 3. Контейнер сторінки */
+@mixin container {
+    width: calc(100% - 32px);
+    max-width: v.$container-max;
+    margin-inline: auto;
+}
+
+/* 4. Адаптивна сітка CSS Grid */
+@mixin responsive-grid($columns: 1, $gap: v.$space-md) {
+    display: grid;
+    grid-template-columns: repeat($columns, minmax(0, 1fr));
+    gap: $gap;
+}
+
+/* 5. Плавні ефекти при наведенні */
+@mixin hover-effect {
+    transition: transform v.$transition-normal,
+                box-shadow v.$transition-normal;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: v.$shadow-card;
+    }
+}

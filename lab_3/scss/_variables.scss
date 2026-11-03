@@ -1,0 +1,71 @@
+
+/* ==========================================
+   Лабораторна робота №3
+   Проєкт: Акустична варта
+   Файл: _variables.scss
+   ========================================== */
+
+/* Основні кольори */
+$color-primary: #1f8a4c;
+$color-primary-dark: #146c3a;
+
+$color-text: #14213d;
+$color-muted: #5f6b7a;
+
+$color-white: #ffffff;
+$color-background: #ffffff;
+$color-surface: #f4f8fb;
+$color-footer: #263746;
+
+/* Кольори меж */
+$color-border: #d6e2ec;
+$color-border-light: #e0e7ee;
+
+/* Кольори статусів */
+$color-success: #188a45;
+$color-success-bg: #d9f5e2;
+
+$color-danger: #e53935;
+$color-danger-bg: #fff0f0;
+
+/* Відступи */
+$space-xs: 4px;
+$space-sm: 8px;
+$space-md: 16px;
+$space-lg: 24px;
+$space-xl: 40px;
+$space-xxl: 60px;
+
+/* Ширина контейнера */
+$container-max: 1200px;
+
+/* Заокруглення */
+$radius-sm: 4px;
+$radius: 6px;
+$radius-lg: 10px;
+
+/* Розміри шрифтів */
+$font-xs: 12px;
+$font-sm: 14px;
+$font-md: 16px;
+$font-lg: 20px;
+$font-xl: 26px;
+$font-xxl: 38px;
+
+/* Контрольні точки адаптивності */
+
+/* Mobile: до 767px */
+$bp-mobile: 767px;
+
+/* Tablet: від 768px */
+$bp-tablet: 768px;
+
+/* Desktop: від 1024px */
+$bp-desktop: 1024px;
+
+/* Анімації */
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;
+
+/* Тіні */
+$shadow-card: 0 5px 15px rgba(0, 0, 0, 0.09);

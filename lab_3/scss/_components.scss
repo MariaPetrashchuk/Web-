@@ -1,0 +1,359 @@
+
+/* ==========================================
+   Лабораторна робота №3
+   Проєкт: Акустична варта
+   Файл: _components.scss
+   ========================================== */
+
+@use "variables" as v;
+@use "mixins" as m;
+
+/* НАВІГАЦІЯ */
+
+.nav {
+    a {
+        display: inline-block;
+        padding: 8px 12px;
+        color: v.$color-text;
+        font-size: v.$font-sm;
+        border-bottom: 2px solid transparent;
+        transition: color v.$transition-normal,
+                    border-color v.$transition-normal;
+
+        &:hover {
+            color: v.$color-primary;
+            border-color: v.$color-primary;
+        }
+
+        &.active {
+            color: v.$color-primary;
+            border-color: v.$color-primary;
+        }
+    }
+}
+
+/* КНОПКИ */
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: v.$space-sm;
+
+    padding: 13px 26px;
+    border: 1px solid v.$color-primary-dark;
+    border-radius: v.$radius;
+
+    background-color: v.$color-primary;
+    color: v.$color-white;
+
+    font-size: v.$font-sm;
+    font-weight: 700;
+    text-align: center;
+
+    cursor: pointer;
+    transition: background-color v.$transition-normal,
+                transform v.$transition-normal;
+
+    &:hover {
+        background-color: v.$color-primary-dark;
+        color: v.$color-white;
+        transform: translateY(-2px);
+    }
+
+    &:focus-visible {
+        outline: 3px solid v.$color-success;
+        outline-offset: 3px;
+    }
+}
+
+/* КАРТКИ */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: v.$space-sm;
+
+    min-width: 0;
+    padding: v.$space-md;
+
+    background-color: v.$color-surface;
+    border: 1px solid v.$color-border;
+    border-radius: v.$radius;
+
+    @include m.hover-effect;
+
+    h3 {
+        font-size: v.$font-md;
+        overflow-wrap: anywhere;
+    }
+
+    p {
+        font-size: v.$font-sm;
+    }
+}
+
+/* КАРТКИ МОНІТОРИНГУ */
+
+.monitoring-card {
+    min-height: 125px;
+
+    .card-label {
+        display: block;
+        font-size: v.$font-xs;
+        color: v.$color-muted;
+    }
+
+    h3 {
+        font-size: clamp(15px, 1.6vw, 19px);
+    }
+
+    p {
+        font-size: v.$font-xs;
+    }
+}
+
+/* СТАТУСИ */
+
+.status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: v.$radius-sm;
+    font-size: v.$font-xs;
+    font-weight: 600;
+
+    &.normal {
+        background-color: v.$color-success-bg;
+        color: v.$color-success;
+    }
+}
+
+/* КАРТКИ ПОСЛУГ */
+
+.service-card {
+    min-height: 125px;
+
+    h3 {
+        font-size: v.$font-md;
+    }
+
+    p {
+        font-size: v.$font-sm;
+        line-height: 1.6;
+    }
+}
+
+/* БАНЕР ПОПЕРЕДЖЕННЯ */
+
+.warning {
+    position: relative;
+    width: calc(100% - 32px);
+    padding: v.$space-lg;
+
+    background-color: v.$color-danger-bg;
+    border: 1px solid v.$color-danger;
+    border-radius: v.$radius;
+
+    h2 {
+        color: v.$color-danger;
+        font-size: v.$font-lg;
+        margin-bottom: v.$space-sm;
+        padding-right: 30px;
+    }
+
+    p {
+        font-size: v.$font-sm;
+        line-height: 1.6;
+        overflow-wrap: break-word;
+    }
+}
+
+/* ІКОНКА ПОПЕРЕДЖЕННЯ */
+
+.warning-icon {
+    @include m.flex-center;
+
+    position: absolute;
+    top: 14px;
+    right: 14px;
+
+    width: 28px;
+    height: 28px;
+
+    background-color: v.$color-danger;
+    color: v.$color-white;
+    border-radius: 50%;
+    font-weight: 700;
+
+    transform: rotate(10deg);
+}
+
+/* ТАБЛИЦЯ ВИМІРЮВАНЬ */
+
+.table-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    border: 1px solid v.$color-border;
+    border-radius: v.$radius;
+}
+
+table {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+    font-size: v.$font-sm;
+
+    th,
+    td {
+        padding: 12px 14px;
+        border: 1px solid v.$color-border-light;
+        text-align: left;
+    }
+
+    th {
+        background-color: #e6edf3;
+        font-weight: 700;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f8fafc;
+    }
+
+    tbody tr:hover {
+        background-color: #edf6f0;
+    }
+}
+
+/* КОЛЬОРИ РЕЗУЛЬТАТІВ */
+
+.danger-text {
+    color: v.$color-danger;
+    font-weight: 600;
+}
+
+.success-text {
+    color: v.$color-success;
+    font-weight: 600;
+}
+
+/* СЕКЦІЯ ЗАМОВЛЕННЯ */
+
+.order-section {
+    > p {
+        margin-bottom: v.$space-lg;
+        font-size: v.$font-sm;
+    }
+}
+
+/* ФОРМА */
+
+.order-form {
+    width: 100%;
+
+    .btn {
+        margin-top: v.$space-lg;
+        min-width: 200px;
+    }
+}
+
+/* MOBILE FIRST: ОДНА КОЛОНКА */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: v.$space-md;
+
+    /* TABLET: ДВІ КОЛОНКИ */
+    @include m.respond-to(v.$bp-tablet) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* DESKTOP: ТРИ КОЛОНКИ */
+    @include m.respond-to(v.$bp-desktop) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: v.$space-lg;
+    }
+}
+
+/* ПОЛЯ ФОРМИ */
+
+.form-field {
+    min-width: 0;
+
+    label {
+        display: block;
+        margin-bottom: v.$space-sm;
+        font-size: v.$font-sm;
+        font-weight: 500;
+
+        span {
+            color: v.$color-danger;
+        }
+    }
+
+    input,
+    select,
+    textarea {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        padding: 12px;
+
+        background-color: v.$color-white;
+        color: v.$color-text;
+
+        border: 1px solid v.$color-border;
+        border-radius: v.$radius;
+
+        font-size: v.$font-sm;
+        transition: border-color v.$transition-normal;
+
+        &:focus {
+            outline: 2px solid #9bd7b0;
+            border-color: v.$color-primary;
+        }
+    }
+
+    textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+}
+
+/* ПОЛЕ ОПИСУ */
+
+.description-field {
+    @include m.respond-to(v.$bp-tablet) {
+        grid-column: 1 / -1;
+    }
+
+    @include m.respond-to(v.$bp-desktop) {
+        grid-column: 3;
+        grid-row: 1 / span 2;
+    }
+}
+
+/* АДАПТИВНА КНОПКА ФОРМИ */
+
+@media (max-width: 767px) {
+    .order-form .btn {
+        width: 100%;
+    }
+}
+
+/* ПОСИЛАННЯ FOOTER */
+
+.footer-nav {
+    a {
+        display: inline-block;
+        padding: 5px 8px;
+        color: v.$color-white;
+        font-size: v.$font-sm;
+
+        &:hover {
+            color: #9ee0b3;
+        }
+    }
+}

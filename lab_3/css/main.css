@@ -1,0 +1,732 @@
+@charset "UTF-8";
+/* ==========================================
+   Лабораторна робота №3
+   Адаптивна верстка за допомогою
+   Flexbox, CSS Grid та SCSS
+
+   Проєкт: Акустична варта
+   Файл: main.scss
+   ========================================== */
+/* Підключення SCSS-модулів */
+/* ==========================================
+   Лабораторна робота №3
+   Проєкт: Акустична варта
+   Файл: _variables.scss
+   ========================================== */
+/* Основні кольори */
+/* Кольори меж */
+/* Кольори статусів */
+/* Відступи */
+/* Ширина контейнера */
+/* Заокруглення */
+/* Розміри шрифтів */
+/* Контрольні точки адаптивності */
+/* Mobile: до 767px */
+/* Tablet: від 768px */
+/* Desktop: від 1024px */
+/* Анімації */
+/* Тіні */
+/* ==========================================
+   Лабораторна робота №3
+   Адаптивна верстка за допомогою
+   Flexbox, CSS Grid та SCSS
+
+   Проєкт: Акустична варта
+   Файл: main.scss
+   ========================================== */
+/* Підключення SCSS-модулів */
+/* ==========================================
+   Лабораторна робота №3
+   Проєкт: Акустична варта
+   Файл: _mixins.scss
+   ========================================== */
+/* 1. Адаптивність через Media Queries */
+/* 2. Центрування елементів через Flexbox */
+/* 3. Контейнер сторінки */
+/* 4. Адаптивна сітка CSS Grid */
+/* 5. Плавні ефекти при наведенні */
+/* ==========================================
+   Лабораторна робота №3
+   Адаптивна верстка за допомогою
+   Flexbox, CSS Grid та SCSS
+
+   Проєкт: Акустична варта
+   Файл: main.scss
+   ========================================== */
+/* Підключення SCSS-модулів */
+/* ==========================================
+   Лабораторна робота №3
+   Проєкт: Акустична варта
+   Файл: _base.scss
+   ========================================== */
+/* Скидання стандартних відступів */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Плавна прокрутка сторінки */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Основні стилі сторінки */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #14213d;
+  background-color: #ffffff;
+  min-width: 0;
+}
+
+/* Заголовки */
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: break-word;
+}
+
+h1 {
+  font-size: 26px;
+}
+
+h2 {
+  font-size: clamp(22px, 3vw, 28px);
+}
+
+h3 {
+  font-size: 16px;
+}
+
+/* Абзаци */
+p {
+  color: #5f6b7a;
+}
+
+/* Посилання */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: #1f8a4c;
+}
+a:focus-visible {
+  outline: 2px solid #1f8a4c;
+  outline-offset: 3px;
+}
+
+/* Адаптивні зображення */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Елементи форм */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* Кнопки */
+button {
+  cursor: pointer;
+}
+
+/* Поля введення */
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+
+/* Таблиці */
+table {
+  border-collapse: collapse;
+}
+
+/* Доступність */
+:focus-visible {
+  outline: 2px solid #1f8a4c;
+  outline-offset: 2px;
+}
+
+/* Плавна анімація з урахуванням налаштувань користувача */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+/* ==========================================
+   Лабораторна робота №3
+   Адаптивна верстка за допомогою
+   Flexbox, CSS Grid та SCSS
+
+   Проєкт: Акустична варта
+   Файл: main.scss
+   ========================================== */
+/* Підключення SCSS-модулів */
+/* ==========================================
+   Лабораторна робота №3
+   Проєкт: Акустична варта
+   Файл: _layout.scss
+   ========================================== */
+/* ОСНОВНИЙ КОНТЕЙНЕР */
+.container {
+  width: calc(100% - 32px);
+  max-width: 1200px;
+  margin-inline: auto;
+  min-width: 0;
+}
+
+/* ВІДСТУПИ СЕКЦІЙ */
+.section {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.section h2 {
+  margin-bottom: 16px;
+}
+@media (min-width: 768px) {
+  .section {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+/* ШАПКА САЙТУ */
+.site-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #d6e2ec;
+  padding: 16px 0;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+@media (min-width: 768px) {
+  .header-content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* ЛОГОТИП І НАЗВА */
+.brand h1 {
+  font-size: clamp(22px, 3vw, 26px);
+  color: #14213d;
+}
+.brand p {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* НАВІГАЦІЯ */
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    width: auto;
+    gap: 8px;
+  }
+}
+
+/* ГОЛОВНИЙ БАНЕР */
+.hero {
+  background-color: #f4f8fb;
+  overflow: hidden;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+@media (min-width: 768px) {
+  .hero-content {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    align-items: center;
+    min-height: 320px;
+  }
+}
+@media (min-width: 1024px) {
+  .hero-content {
+    min-height: 370px;
+    gap: 40px;
+  }
+}
+
+/* ТЕКСТ БАНЕРА */
+.hero-text {
+  min-width: 0;
+}
+.hero-text h2 {
+  font-size: clamp(28px, 5vw, 46px);
+  line-height: 1.15;
+  margin-bottom: 16px;
+  max-width: 600px;
+}
+.hero-text p {
+  font-size: clamp(14px, 2vw, 17px);
+  margin-bottom: 24px;
+  max-width: 540px;
+}
+
+/* ФОТОГРАФІЯ БАНЕРА */
+.hero-image {
+  width: 100%;
+  min-height: 220px;
+  border-radius: 10px;
+  background-image: url("../images/header.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+@media (min-width: 768px) {
+  .hero-image {
+    min-height: 270px;
+  }
+}
+@media (min-width: 1024px) {
+  .hero-image {
+    min-height: 310px;
+  }
+}
+
+/* СІТКА ПОТОЧНОГО МОНІТОРИНГУ */
+.monitoring-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 16px;
+}
+@media (min-width: 768px) {
+  .monitoring-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .monitoring-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+/* СІТКА НАПРЯМІВ РОБОТИ */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 16px;
+}
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* НИЖНІЙ КОЛОНТИТУЛ */
+footer {
+  background-color: #263746;
+  color: #ffffff;
+  padding: 40px 0;
+  margin-top: 40px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+@media (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* ІНФОРМАЦІЯ У FOOTER */
+.footer-brand h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+.footer-brand p {
+  color: #d2dbe4;
+  font-size: 12px;
+}
+
+/* ПРАВА ЧАСТИНА FOOTER */
+.footer-right {
+  text-align: left;
+}
+.footer-right p {
+  color: #d2dbe4;
+  font-size: 12px;
+  margin-top: 16px;
+}
+@media (min-width: 768px) {
+  .footer-right {
+    text-align: right;
+  }
+}
+
+/* НАВІГАЦІЯ FOOTER */
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+@media (min-width: 768px) {
+  .footer-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+}
+
+/* ==========================================
+   Лабораторна робота №3
+   Адаптивна верстка за допомогою
+   Flexbox, CSS Grid та SCSS
+
+   Проєкт: Акустична варта
+   Файл: main.scss
+   ========================================== */
+/* Підключення SCSS-модулів */
+/* ==========================================
+   Лабораторна робота №3
+   Проєкт: Акустична варта
+   Файл: _components.scss
+   ========================================== */
+/* НАВІГАЦІЯ */
+.nav a {
+  display: inline-block;
+  padding: 8px 12px;
+  color: #14213d;
+  font-size: 14px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.nav a:hover {
+  color: #1f8a4c;
+  border-color: #1f8a4c;
+}
+.nav a.active {
+  color: #1f8a4c;
+  border-color: #1f8a4c;
+}
+
+/* КНОПКИ */
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border: 1px solid #146c3a;
+  border-radius: 6px;
+  background-color: #1f8a4c;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn:hover {
+  background-color: #146c3a;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+.btn:focus-visible {
+  outline: 3px solid #188a45;
+  outline-offset: 3px;
+}
+
+/* КАРТКИ */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+  padding: 16px;
+  background-color: #f4f8fb;
+  border: 1px solid #d6e2ec;
+  border-radius: 6px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
+}
+.card h3 {
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+.card p {
+  font-size: 14px;
+}
+
+/* КАРТКИ МОНІТОРИНГУ */
+.monitoring-card {
+  min-height: 125px;
+}
+.monitoring-card .card-label {
+  display: block;
+  font-size: 12px;
+  color: #5f6b7a;
+}
+.monitoring-card h3 {
+  font-size: clamp(15px, 1.6vw, 19px);
+}
+.monitoring-card p {
+  font-size: 12px;
+}
+
+/* СТАТУСИ */
+.status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.status.normal {
+  background-color: #d9f5e2;
+  color: #188a45;
+}
+
+/* КАРТКИ ПОСЛУГ */
+.service-card {
+  min-height: 125px;
+}
+.service-card h3 {
+  font-size: 16px;
+}
+.service-card p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* БАНЕР ПОПЕРЕДЖЕННЯ */
+.warning {
+  position: relative;
+  width: calc(100% - 32px);
+  padding: 24px;
+  background-color: #fff0f0;
+  border: 1px solid #e53935;
+  border-radius: 6px;
+}
+.warning h2 {
+  color: #e53935;
+  font-size: 20px;
+  margin-bottom: 8px;
+  padding-right: 30px;
+}
+.warning p {
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+/* ІКОНКА ПОПЕРЕДЖЕННЯ */
+.warning-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  background-color: #e53935;
+  color: #ffffff;
+  border-radius: 50%;
+  font-weight: 700;
+  transform: rotate(10deg);
+}
+
+/* ТАБЛИЦЯ ВИМІРЮВАНЬ */
+.table-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid #d6e2ec;
+  border-radius: 6px;
+}
+
+table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+table th,
+table td {
+  padding: 12px 14px;
+  border: 1px solid #e0e7ee;
+  text-align: left;
+}
+table th {
+  background-color: #e6edf3;
+  font-weight: 700;
+}
+table tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+table tbody tr:hover {
+  background-color: #edf6f0;
+}
+
+/* КОЛЬОРИ РЕЗУЛЬТАТІВ */
+.danger-text {
+  color: #e53935;
+  font-weight: 600;
+}
+
+.success-text {
+  color: #188a45;
+  font-weight: 600;
+}
+
+/* СЕКЦІЯ ЗАМОВЛЕННЯ */
+.order-section > p {
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+/* ФОРМА */
+.order-form {
+  width: 100%;
+}
+.order-form .btn {
+  margin-top: 24px;
+  min-width: 200px;
+}
+
+/* MOBILE FIRST: ОДНА КОЛОНКА */
+.form-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  /* TABLET: ДВІ КОЛОНКИ */
+}
+@media (min-width: 768px) {
+  .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.form-grid {
+  /* DESKTOP: ТРИ КОЛОНКИ */
+}
+@media (min-width: 1024px) {
+  .form-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+/* ПОЛЯ ФОРМИ */
+.form-field {
+  min-width: 0;
+}
+.form-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.form-field label span {
+  color: #e53935;
+}
+.form-field input,
+.form-field select,
+.form-field textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 12px;
+  background-color: #ffffff;
+  color: #14213d;
+  border: 1px solid #d6e2ec;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: 2px solid #9bd7b0;
+  border-color: #1f8a4c;
+}
+.form-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* ПОЛЕ ОПИСУ */
+@media (min-width: 768px) {
+  .description-field {
+    grid-column: 1/-1;
+  }
+}
+@media (min-width: 1024px) {
+  .description-field {
+    grid-column: 3;
+    grid-row: 1/span 2;
+  }
+}
+
+/* АДАПТИВНА КНОПКА ФОРМИ */
+@media (max-width: 767px) {
+  .order-form .btn {
+    width: 100%;
+  }
+}
+/* ПОСИЛАННЯ FOOTER */
+.footer-nav a {
+  display: inline-block;
+  padding: 5px 8px;
+  color: #ffffff;
+  font-size: 14px;
+}
+.footer-nav a:hover {
+  color: #9ee0b3;
+}
